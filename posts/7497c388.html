@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="zh_CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>第一次养车，困难重重 | Yuzi&#39;s Blog</title>
+        <meta name="author" content="Yuzi" />
+        <meta name="description" content="A blog which include my study and life" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/lxh.png" />
+        <script>
+            if (localStorage.getItem('theme') === "dark" ||
+                    (!("theme" in localStorage) &&
+                        window.matchMedia("(prefers-color-scheme: dark)").matches)
+                ) {
+                    document.documentElement.classList.add("dark");
+                }
+        </script>
+        <script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<link
+    rel="stylesheet"
+    id="highlight-style-dark"
+    disabled
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github-dark.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.staticfile.org/waline/2.15.5/waline.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.5/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.5/waline-meta.min.css" />
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <script src="/js/lib/toc.js"></script>
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="background"></div>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>
+                YUZI&#39;S BLOG
+            </span>
+        </a>
+        
+            <a href="/">
+                <i class="fa-solid fa-house fa-fw"></i>
+                <span>&ensp;Home</span>
+            </a>
+            
+            <a href="/about">
+                <i class="fa-solid fa-id-card fa-fw"></i>
+                <span>&ensp;About</span>
+            </a>
+            
+            <a href="/archives">
+                <i class="fa-solid fa-box-archive fa-fw"></i>
+                <span>&ensp;Archives</span>
+            </a>
+            
+            <a href="/categories">
+                <i class="fa-solid fa-bookmark fa-fw"></i>
+                <span>&ensp;Categories</span>
+            </a>
+            
+            <a href="/tags">
+                <i class="fa-solid fa-tags fa-fw"></i>
+                <span>&ensp;Tags</span>
+            </a>
+            
+                <i class="fa-solid fa-fw theme-switcher"
+                    :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+                    @click="handleThemeSwitch"></i>
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YUZI&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                    <a href="/">
+                        <div class="item">
+                            <div style="min-width: 20px; max-width: 50px; width: 10%">
+                                <i class="fa-solid fa-house fa-fw"></i>
+                            </div>
+                            <div style="min-width: 100px; max-width: 150%; width: 20%">
+                                Home
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="/about">
+                        <div class="item">
+                            <div style="min-width: 20px; max-width: 50px; width: 10%">
+                                <i class="fa-solid fa-id-card fa-fw"></i>
+                            </div>
+                            <div style="min-width: 100px; max-width: 150%; width: 20%">
+                                About
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="/archives">
+                        <div class="item">
+                            <div style="min-width: 20px; max-width: 50px; width: 10%">
+                                <i class="fa-solid fa-box-archive fa-fw"></i>
+                            </div>
+                            <div style="min-width: 100px; max-width: 150%; width: 20%">
+                                Archives
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="/categories">
+                        <div class="item">
+                            <div style="min-width: 20px; max-width: 50px; width: 10%">
+                                <i class="fa-solid fa-bookmark fa-fw"></i>
+                            </div>
+                            <div style="min-width: 100px; max-width: 150%; width: 20%">
+                                Categories
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="/tags">
+                        <div class="item">
+                            <div style="min-width: 20px; max-width: 50px; width: 10%">
+                                <i class="fa-solid fa-tags fa-fw"></i>
+                            </div>
+                            <div style="min-width: 100px; max-width: 150%; width: 20%">
+                                Tags
+                            </div>
+                        </div>
+                    </a>
+                    
+                        <div class="item" @click="handleThemeSwitch">
+                            <div style="min-width: 20px; max-width: 50px; width: 10%">
+                                <i class="fa-solid fa-fw theme-switcher"
+                                    :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
+                            </div>
+                            <div style="min-width: 100px; max-width: 150%; width: 20%">
+                                Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
+                            </div>
+                        </div>
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+            <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+                <div class="article">
+    <div>
+        <h1>第一次养车，困难重重</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/10/15
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E8%BD%A6/" style="color: #03a9f4">车</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <toc-component></toc-component>
+    <div class="content" v-pre id="main-content">
+        <p>原文地址： <a target="_blank" rel="noopener" href="https://yuzi.dev/posts/life/first-time-keeping-a-car">https://yuzi.dev/posts/life/first-time-keeping-a-car</a></p>
+<span id="more"></span>
+
+<p>在国庆之前，我开车的经历仅限于在老家开我爸的车，老家仅有的公共交通在私家车面前速度完败，所以我一直觉得开车出行是比地铁公交舒服多的事情，直到……</p>
+<h1 id="第一次超长途"><a href="#第一次超长途" class="headerlink" title="第一次超长途"></a>第一次超长途</h1><p>因为我爸现在也很少开车了，所以我想找个机会把车开来我工作的城市——武汉，虽然目前没有上班开车通勤的必要（走路15分钟），但是周末出个游还是不错的。于是我盘算，国庆节前回家，10.1当前开车载着父母和外婆来武汉旅游7天，然后送他们乘坐飞机回家，我就可以接手我爸的车了。</p>
+<p>这一趟还是很惊人的，全程800公里，我的目标是我一个人开完。我们从10.1早上8点左右出发，起初，我还是很有冲劲的，一直在保持高速积极超车，我妈非常的担心，觉得我开120都太快了，100就行了，然而我还是在狠狠的冲刺。没过多久我就发现了区间测速这个可恶的东西，它的区间，不是间隔的一段一段，而是连续的！！！走完一个区间又进入了下一个区间！！！这导致我还必须时不时压着速度走。</p>
+<p>我家的车是12年的新福克斯，除了倒车雷达和上坡辅助外，没有任何的辅助驾驶功能！是的，连定速巡航都没有！！所以我的右脚就需要不停地在两个踏板之间不断地移动，所以防止超速是一件很痛苦的事。</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://server.blog.yuzi.dev:23333/api/v2/objects/file/5vi3wswgyyfzzjbmmy.webp" alt="群山之间的开州服务区"></p>
+<p>万州这一片的山真是一座比一座高，父母在车上也在不住地感叹。虽然出行当天是十一，但路上并不是很堵，唯一一次堵车是因为事故，也只堵了十多分钟就恢复了。</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://server.blog.yuzi.dev:23333/api/v2/objects/file/n60zfh6ulkbaai8do1.webp" alt="巫山服务区"></p>
+<p>但逐渐接近武汉，车变得多了起来，地势也变得平坦了起来，限速也逐渐由100提到110最后来到120。人也开始疲惫起来，抓着方向盘太久，导致手都抬酸了，也不得不抓方向盘下半部分，甚至单手开一会。下了高速，发现离家还有40多公里，还要在三环上慢悠悠的开大半天，这时候才意识到武汉这座大城市的威力。最终，我们还是有惊无险的到达了目的地。</p>
+<p>成本算下来，我们加油都花了300多，国庆期间免了过路费，如果加起来也就是700多，接近成本1元&#x2F;公里，4个人也就是0.25&#x2F;公里，和动车差不多吧，当然还要算上开车的精力的话，开长途确实不是一个多么好的主意。</p>
+<h1 id="养车还是贵"><a href="#养车还是贵" class="headerlink" title="养车还是贵"></a>养车还是贵</h1><p>这就来到了我司的主要业务了，咱们途虎就是干这行的，所以我9月底一回到家，就准备把车拿去虎子保养一番【工资回收计划{大嘘}】。在我家不远处正好还开了一家新店。</p>
+<p>检查一番，车子并没有什么大问题，但是前轮磨损得有些严重，建议更换。想着这次要开这么远，为了确保万无一失，就选择了更换一下，一条380多。再加上换个机油，这一次保养就花了我1.1k！</p>
+<p>停车又是一笔钱，一问小区物业才知道，小区因为没有地下停车场，车位紧张，所以只有户主才能办理车位！【甚至还要查行驶证上的名字是不是户主的】。没办法，只能把车停公司，还好公司还能给咱们员工提供优惠价车位【感动】，预缴了几个月，接近1k又花出去了，心痛中……</p>
+<h1 id="光谷的地狱交通"><a href="#光谷的地狱交通" class="headerlink" title="光谷的地狱交通"></a>光谷的地狱交通</h1><p>最可怕的，还是光谷的交通，这里让我【和我同事】直接改变了出行的心态。请看图，这是一个周五的晚高峰，前往光谷核心区的路线：</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://server.blog.yuzi.dev:23333/api/v2/objects/file/6zj42c7ojjh6zhbbb8.jpg" alt="4.9公里，52分钟！！！！"></p>
+<p>这开车还没有走路快的原因，就是车多和人多。一出园区门，排队到主路的500米就要排13分钟，旁边一个小学放学，学生们拥挤在公交车站，直接占用了本就拥挤的路的两条道。再加上某些大路口的红绿灯设置地不合理【说的就是软件园路口！！！】极大的削减了开车出行的幸福度。  </p>
+<p>说到底，还是因为光谷的地铁缺少，明明作为高新区，却只有一条2号线从武汉东站走过，光谷核心区只有有轨电车，但这玩意非高架段也慢啊！！！关山大道的有轨电车真应该改成高架重修！！！</p>
+<h1 id="电驴，启动！！打不过就加入"><a href="#电驴，启动！！打不过就加入" class="headerlink" title="电驴，启动！！打不过就加入"></a>电驴，启动！！打不过就加入</h1><p>光谷的电驴也是非常的多，而四轮车在规规矩矩的等红绿灯、堵车时，他们却随意穿行，甚至直接占用机动车道行驶，真让我恨得牙痒痒。不过，对于短途出行，这玩意看着还真挺不错的，所以我决定搞台二手试试。</p>
+<p>就这样，在闲鱼上看上了一个个人卖家的九号电动车后，我和同事小鹏便开着车走了20多公里来到汉阳和他们进行线下交易。经过简单的试驾后，就敲定把它买下来了。但如何把它运回来又成了一个难题，我们本想的是把它塞进后备箱，但是塞进去了后备箱就关不上了【这下知道掀背车的好了】最后花了好几十找货拉拉把它运过来……</p>
+<p>在骑电动车上班后，它给我带来的幸福感比四轮多多了！！！现在我上班从出门到公司只需要8分钟！骑行时间在4-5分钟左右，真是上班像上厕所一样方便。中午可以选择回家睡觉，发版的晚上可以选择回家呆到20点再回公司发版【没错这篇文章的大部分就是这个时间写的】，午饭和晚饭可以去到800米外的大学美食街品鉴，极大的提高了打工生活的质量【真香】。</p>
+<h1 id="所以，四轮的意义是？"><a href="#所以，四轮的意义是？" class="headerlink" title="所以，四轮的意义是？"></a>所以，四轮的意义是？</h1><p>虽然养四轮车和开四轮车是一件如此槽心的事情，那为什么还要养呢？</p>
+<p>我觉得还是有三个方面，四轮车是无可替代的：一个是拓宽生活圈的范围，有了四轮车可以去地铁无法触及的有趣地方，而且可以快速地到达，比如去汉阳交易电动车，如果没有四轮的话可能我只有周末抽时间坐公交摇过去。第二个就是提供一个私密的空间，我可以与车上的乘客在路途上谈天说地，而无需担心说的话被别人听到，这点也是公共交通所不具有的。第三个就是对行李友好，</p>
+<p>相较于目前最新的车与我的车，我最大的需求就是智驾了，要求也不高，能在快速路上自己开，堵车的时候能帮我自动跟车别被插队了，能自动停车就好了。价格在15万以下，其实小鹏Mona03就挺好的，但我又想要混动😢，只能等一手笛子的智驾下放给秦了，或许5年后会有？</p>
+
+    </div>
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2020 - 2024 Yuzi&#39;s Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yuzi
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+
+<script>
+    Waline.init({
+        el: "#waline-container",
+        serverURL: "https://comments.yuzi.dev",
+        commentCount: true,
+        pageview: false,
+        emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
+        meta: "nick,mail,link".split(","),
+        requiredMeta: "nick".split(","),
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "10",
+        login: "enable",
+        
+        locale: {"placeholder":"欢迎评论(填写邮箱可在被回复时收到邮件提醒)"},
+        
+        dark: "html.dark",
+    });
+</script>
+
+
+
+        
+    
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 2,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
+</html>
